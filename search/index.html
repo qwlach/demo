@@ -1,0 +1,63 @@
+<html>  
+<head>  
+  <title>search</title>  
+  <link rel="stylesheet" href="./index.css" />
+</head>  
+<body>  
+  <input type="text" placeholder="请输入查询的内容" id="ipt" />
+  <select id="select" style="min-width: 100px">
+    
+  </select>
+</body>  
+<script>
+  var array = [
+    {label: "北京烤鸭", value: "北京烤鸭"},
+    {label: "北京天安门", value: "北京天安门"},
+    {label: "北京故宫", value: "北京故宫"},
+    {label: "北京长城", value: "北京长城"},
+    {label: "江西南昌", value: "江西南昌"},
+    {label: "江西南部", value: "江西南部"},
+    {label: "北京地铁", value: "北京地铁"},
+    {label: "北京颐和园", value: "北京颐和园"},
+  ]
+  var ipt = document.querySelector("#ipt");
+  var sel = document.querySelector("#select");
+  
+  //字符串的indexof方法
+  ipt.onkeyup = function() {
+    var arr = [];
+    if (!ipt.value) {
+      clearChild();
+      return;
+    }
+    console.log(ipt.value)   
+    for (var i=0, j=array.length; i<j; i++) {
+      if (array[i].label.indexOf(ipt.value)>=0) {
+        arr.push(array[i]);
+      }
+    }
+    addChild(arr) 
+  }
+
+  function addChild(arr) {
+    console.log(sel.childNodes)
+    clearChild();
+    if(!arr.length) {
+      return;
+    }
+    for (var i=0, j=arr.length; i<j; i++){
+      var htmlFor = arr[i].label;
+      var opt = document.createElement('option');
+      opt.setAttribute('value', arr[i].value)
+      opt.innerHTML = htmlFor;
+      sel.appendChild(opt)
+    }
+  }
+
+  function clearChild() {
+    while (sel.hasChildNodes()) {
+      sel.removeChild(sel.firstChild)
+    }
+  }
+</script>
+</html> 
