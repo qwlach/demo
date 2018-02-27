@@ -24,23 +24,37 @@
   var sel = document.querySelector("#select");
   
   //字符串的indexof方法
+  // ipt.onkeyup = function() {
+  //   var arr = [];
+  //   if (!ipt.value) {
+  //     clearChild();
+  //     return;
+  //   }  
+  //   for (var i=0, j=array.length; i<j; i++) {
+  //     if (array[i].label.indexOf(ipt.value)>=0) {
+  //       arr.push(array[i]);
+  //     }
+  //   }
+  //   addChild(arr) 
+  // }
+
+  //正则匹配的模糊查询
   ipt.onkeyup = function() {
     var arr = [];
     if (!ipt.value) {
       clearChild();
       return;
     }
-    console.log(ipt.value)   
+    var reg = new RegExp(ipt.value);
     for (var i=0, j=array.length; i<j; i++) {
-      if (array[i].label.indexOf(ipt.value)>=0) {
-        arr.push(array[i]);
+      if (array[i].label.match(reg)) {
+        arr.push(array[i])
       }
     }
-    addChild(arr) 
+    addChild(arr);
   }
-
+ 
   function addChild(arr) {
-    console.log(sel.childNodes)
     clearChild();
     if(!arr.length) {
       return;
