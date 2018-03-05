@@ -1,0 +1,16 @@
+<html>  
+<head>  
+    <title>test</title>  
+</head>  
+<body> 
+  <div id="box"> 
+    <p>Hello every body! My name is Vera, I like javascript vary much!!!!</p> 
+    <h2>获取自适应高度元素的高度</h2> 
+  </div>
+  <script>  
+     var box = document.querySelector("#box");
+     var height = window.getComputedStyle(box, null).height;
+     console.log(height);
+  </script>   
+</body>  
+</html> 
